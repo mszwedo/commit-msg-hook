@@ -1,0 +1,17 @@
+#!/bin/sh
+
+MSG="$(cat $1 | egrep '(Issue-[0-9]+).*')"
+if [ "$MSG" == "" ]; then
+	echo
+	echo "Error: -----------------------------------------"
+	echo
+	echo " Your commit message is not formatted correctly."
+	echo " It must contain an issue number."
+	echo
+	echo "   Example:"
+	echo "      Issue-123 Added some new feature"
+	echo
+	echo "------------------------------------------------"
+	exit 1
+fi
+
